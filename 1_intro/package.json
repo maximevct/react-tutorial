@@ -1,0 +1,16 @@
+{
+  "name": "react-tutorial-part-1",
+  "version": "0.1.0",
+  "description": "Introduction to Node.js",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twiggeek/react-tutorial.git"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Maxime Vincent"
+}
