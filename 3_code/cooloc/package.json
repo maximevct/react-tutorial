@@ -1,0 +1,32 @@
+{
+  "name": "cooloc",
+  "version": "0.1.0",
+  "description": "Manage your roommate",
+  "main": "app.js",
+  "dependencies": {
+    "basic-auth": "^1.0.0",
+    "body-parser": "^1.4.3",
+    "browserify": "^9.0.3",
+    "debug": "^0.8.1",
+    "express": "^4.4.5",
+    "pg": "^4.3.0",
+    "pg-spice": "^2.0.1",
+    "react": "^0.13.1",
+    "react-async": "^2.1.0",
+    "react-bootstrap": "^0.18.0",
+    "react-router": "^0.13.2",
+    "reactify": "^1.1.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twiggeek/portfolio.git"
+  },
+  "scripts": {
+    "start": "npm run build && node app.js",
+    "build": "browserify -t reactify client/index.jsx | uglifyjs > client/public/bundle.js",
+    "createBdd": "cd server && ./updateBDD.sh; cd .."
+  },
+  "author": "Twiggeek"
+}
