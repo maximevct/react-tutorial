@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.4.3",
     "browserify": "^9.0.3",
+    "chance": "^0.7.3",
     "express": "^4.4.5",
     "react": "^0.13.1",
     "reactify": "^1.1.0",

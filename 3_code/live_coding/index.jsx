@@ -1,8 +1,8 @@
 'use strict';
-/** @jsx React.DOM */
+
 var React = require('react');
 
-var List = require('./List.jsx');
+var List   = require('./List.jsx');
 
 var App = React.createClass({
   render: function () {
@@ -10,9 +10,7 @@ var App = React.createClass({
       <div id="wrapper">
         <div id="page-wrapper">
           <div className="container-fluid">
-            <div className="row">
-              <List />
-            </div>
+            <List />
           </div>
         </div>
       </div>
