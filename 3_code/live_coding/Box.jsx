@@ -15,4 +15,9 @@ var UserBox = React.createClass({
   }
 });
 
+/**
+ * Montrer un exemple de passage de fonction comme propriété pour intéragir entre composants
+ * Comme dans le cas de création d'un formulaire par exmeple, les fonctions Handle devront ^etres crées dans cette Box et envoyée en props aux enfants
+ */
+
 module.exports = UserBox;

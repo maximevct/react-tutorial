@@ -13,3 +13,9 @@ $ npm install
 $ npm start
 ```
 
+### Packages
+  - Reactify
+  - Uglifyjs
+  - Browserify
+  - Chance
+  - Express

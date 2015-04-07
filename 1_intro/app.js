@@ -37,10 +37,29 @@ function main(elem, callback) {
   callback(obj);
 }
 
+/**
+ * Déclaration d'une closure
+ * @param  {void}
+ * @return {function}
+ */
+var add = (function () {
+    var counter = 0;
+    return function () {return counter += 1;}
+})();
+
 main(obj.tata, function (elem) {
+  var tata = 'PATATA';
   console.log('From callback : ' + elem.toto);
   console.log('From callback : ' + tutu());
   obj.objFunc(function (elem) {
     console.log('From callback in object : ' + elem());
+    console.log('From callback in object : ' + tata);
   });
 });
+
+add();
+add();
+add();
+
+console.log('From closure : ' + add());
+console.log('From closure : ' + add);
