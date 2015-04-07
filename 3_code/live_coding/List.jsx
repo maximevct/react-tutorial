@@ -19,6 +19,17 @@ var User = React.createClass({
   }
 });
 
+var AlertDanger = React.createClass({
+  render: function() {
+    return (
+      <div className="alert alert-danger">
+        <strong>Error : </strong>
+        Number of users must be <code>{'0 < nbrUser <= 200'}</code> and is actually : {this.props.nbrUser}
+      </div>
+    );
+  }
+});
+
 var List = React.createClass({
   displayName: 'List',
   getDefaultProps: function () {
@@ -30,14 +41,17 @@ var List = React.createClass({
     return {
       users : [],
       nbrUser : 10,
-      isPendig : false
+      isPendig : false,
+      errorDiv : <div />
     };
   },
-  getUsers: function () {
+  getUsers: function (nbrUser) {
+    if (nbrUser === undefined)
+      nbrUser = this.state.nbrUser;
     if (!this.state.isPendig) {
       this.setState({ isPendig : true }, function () {
-        $.get(this.props.url + '/' + this.state.nbrUser, function (res) {
-          this.setState({ users : res, isPendig : false, nbrUser : res.length });
+        $.get(this.props.url + '/' + nbrUser, function (res) {
+          this.setState({ users : res, isPendig : false, nbrUser : res.length, errorDiv : <div /> });
         }.bind(this));
       }.bind(this));
     }
@@ -45,13 +59,20 @@ var List = React.createClass({
   componentDidMount: function () {
     this.getUsers();
   },
+  setErrorDiv: function (nbrUser) {
+    this.setState({
+      nbrUser : nbrUser,
+      users : [],
+      isPendig : false,
+      errorDiv : <AlertDanger nbrUser={nbrUser} />
+    });
+  },
   handleChangeNumberUsers: function () {
     var nbrUser = React.findDOMNode(this.refs.nbrUser).value;
-    if (nbrUser < 1)
-      nbrUser = 10;
-    this.setState({ nbrUser : nbrUser }, function () {
-      this.getUsers();
-    }.bind(this));
+    if (nbrUser > 0 && nbrUser <= 200)
+      this.getUsers(nbrUser);
+    else
+      this.setErrorDiv(nbrUser);
   },
   render: function () {
     var UserNode = this.state.users.map(function (user, index) {
@@ -63,6 +84,7 @@ var List = React.createClass({
       <div className="panel panel-default">
         <div className="panel-heading">User List</div>
         <div className="panel-body">
+          {this.state.errorDiv}
           <div className="input-group">
             <span className="input-group-btn">
               <button className="btn btn-default" type="button" onClick={this.handleChangeNumberUsers}><span className="glyphicon glyphicon-refresh"></span></button>

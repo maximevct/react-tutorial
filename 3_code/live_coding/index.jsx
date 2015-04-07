@@ -2,7 +2,7 @@
 
 var React = require('react');
 
-var List   = require('./List.jsx');
+var Box   = require('./Box.jsx');
 
 var App = React.createClass({
   render: function () {
@@ -10,7 +10,7 @@ var App = React.createClass({
       <div id="wrapper">
         <div id="page-wrapper">
           <div className="container-fluid">
-            <List />
+            <Box />
           </div>
         </div>
       </div>
