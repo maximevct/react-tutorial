@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Déclaration d'un fonction contenue dans une variable
